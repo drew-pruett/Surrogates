@@ -7,8 +7,7 @@
  <var><name> LeftAtrium.Pressure </name></var>
  <var><name> CardiacOutput.Flow </name></var>
  <var><name> CardiacOutput.StrokeVolume </name></var>
- <var><name> Heart-Rate.Rate </name></var>
- 
+ <var><name> Heart-Rate.Rate </name></var> 
  <var><name> BloodPhValues.ArtysPh </name></var>
  <var><name> ECFV.Vol(L)  </name></var>
   <var><name> NaPool.[Na+(mEq/L)]  </name></var>
