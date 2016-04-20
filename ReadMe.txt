@@ -1,3 +1,0 @@
-The text files newBatch* describe two batches of 1000 virtual patients, in terms of the parameter samples themselves.  The nth line of newBatchallison is connected to the nth Patient in allisonICS; the patient files describe the model outputs at baseline (minute 20195) and at the end of the trial (minute 40355). The varroster.DES file (open with notebook) tells waht the columns in the patient files are.  The file PArmsAndRanges describes the model parameters that were allowed to vary, and the limits of their uniform distributions.    
-
-Write wpruett@umc.edu with any questions, or get in touch through the github system.

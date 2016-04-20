@@ -1,0 +1,393 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     15913,        384]
+NotebookOptionsPosition[     15628,        370]
+NotebookOutlinePosition[     15972,        385]
+CellTagsIndexPosition[     15929,        382]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.6301589416347947`*^9, 3.6301590770095377`*^9}, {
+   3.630159389400406*^9, 3.6301593926875935`*^9}, {3.6301595141695423`*^9, 
+   3.6301595209009266`*^9}, {3.630159618075485*^9, 3.6301596539285355`*^9}, {
+   3.63016027519307*^9, 3.6301603069348855`*^9}, {3.630160516953898*^9, 
+   3.6301606204778194`*^9}, {3.6301611909254465`*^9, 
+   3.6301611912034626`*^9}, {3.630161651620797*^9, 3.630161651893813*^9}, {
+   3.630161742292983*^9, 3.6301617450841427`*^9}, {3.6309256309919176`*^9, 
+   3.6309256436696424`*^9}, {3.6309273416277604`*^9, 3.630927345381975*^9}, {
+   3.6318923070795326`*^9, 3.631892309415666*^9}, {3.6318923476538534`*^9, 
+   3.631892364309806*^9}, {3.632582723803918*^9, 3.6325827241229362`*^9}, {
+   3.6325841910968423`*^9, 3.632584231705165*^9}, {3.6325855810343423`*^9, 
+   3.6325855812253532`*^9}, 3.6325877568617926`*^9, {3.6326565592520647`*^9, 
+   3.6326565680185657`*^9}, {3.6326567503299932`*^9, 
+   3.6326567672279596`*^9}, {3.6327880335089617`*^9, 
+   3.6327880786275425`*^9}, {3.6343188204426737`*^9, 
+   3.6343188347324915`*^9}, {3.6343195823512526`*^9, 3.634319587111525*^9}, {
+   3.634321917878837*^9, 3.63432193401476*^9}, {3.6346611615886273`*^9, 
+   3.6346611617876387`*^9}, {3.6446021121185513`*^9, 3.644602131883786*^9}, {
+   3.644676176265479*^9, 3.6446761862806964`*^9}, {3.644679400030941*^9, 
+   3.6446794003741417`*^9}, {3.6643047996943007`*^9, 3.66430482197114*^9}, {
+   3.6659277651550646`*^9, 3.665927857234331*^9}, {3.665927897675644*^9, 
+   3.66592791700975*^9}, {3.6700790485195312`*^9, 3.6700790516377096`*^9}, {
+   3.6701680307620244`*^9, 3.670168053028298*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"newMake", "[", 
+    RowBox[{
+    "nnn_", ",", "set_", ",", "samps_", ",", "stage1_", ",", "stage2_", ",", 
+     "index_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"data", ",", "samples"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"LL", "=", 
+       RowBox[{"Length", "[", "set", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"tsamp", "=", 
+       RowBox[{"Sort", "[", 
+        RowBox[{"RandomSample", "[", 
+         RowBox[{
+          RowBox[{"Range", "[", "LL", "]"}], ",", "nnn"}], "]"}], "]"}]}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"lsamp", "=", 
+       RowBox[{"Complement", "[", 
+        RowBox[{
+         RowBox[{"Range", "[", "LL", "]"}], ",", "tsamp"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"tlist", "=", 
+       RowBox[{"Transpose", "[", 
+        RowBox[{"{", "tsamp", "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"llist", "=", 
+       RowBox[{"Transpose", "[", 
+        RowBox[{"{", "lsamp", "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"ldata", "=", 
+       RowBox[{"Extract", "[", 
+        RowBox[{"set", ",", "llist"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"lsamples", "=", 
+       RowBox[{"Extract", "[", 
+        RowBox[{"samps", ",", "llist"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"tdata", "=", 
+       RowBox[{"Extract", "[", 
+        RowBox[{"set", ",", "tlist"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"tsamples", "=", 
+       RowBox[{"Extract", "[", 
+        RowBox[{"samps", ",", "tlist"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Mu", "=", 
+       RowBox[{"Mean", "[", "samps", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Sigma", "=", 
+       RowBox[{"StandardDeviation", "[", "samps", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"stage2", "==", "0"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"loutput", "=", 
+          RowBox[{"ldata", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", "stage1", ",", "index"}], "]"}], "]"}]}], ";",
+          "\[IndentingNewLine]", 
+         RowBox[{"toutput", "=", 
+          RowBox[{"tdata", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", "stage1", ",", "index"}], "]"}], "]"}]}]}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"loutput", "=", 
+          RowBox[{
+           RowBox[{"ldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"All", ",", "stage1", ",", "index"}], "]"}], "]"}], "-", 
+           RowBox[{"ldata", "[", 
+            RowBox[{"[", 
+             RowBox[{"All", ",", "stage2", ",", "index"}], "]"}], "]"}]}]}], 
+         ";", "\[IndentingNewLine]", 
+         RowBox[{"toutput", "=", 
+          RowBox[{
+           RowBox[{"tdata", "[", 
+            RowBox[{"[", 
+             RowBox[{"All", ",", "stage1", ",", "index"}], "]"}], "]"}], "-", 
+           RowBox[{"tdata", "[", 
+            RowBox[{"[", 
+             RowBox[{"All", ",", "stage2", ",", "index"}], "]"}], 
+            "]"}]}]}]}]}], "]"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Form", "[", 
+    RowBox[{"x_", ",", "v_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "i", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"nx", "=", 
+       RowBox[{"Map", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"NumberForm", "[", 
+           RowBox[{"#", ",", 
+            RowBox[{"ExponentFunction", "->", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"-", "10"}], "<", "#", "<", "10"}], ",", "Null", 
+                 ",", "#"}], "]"}], "&"}], ")"}]}]}], "]"}], "&"}], ",", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"x", "-", "Mu"}], ")"}], "/", "Sigma"}], ")"}]}], "]"}]}],
+       ";", "\[IndentingNewLine]", 
+      RowBox[{"out", "=", 
+       RowBox[{
+        RowBox[{"ToString", "[", 
+         RowBox[{"Chop", "[", 
+          RowBox[{"v", ",", 
+           RowBox[{"10", "^", 
+            RowBox[{"-", "5"}]}]}], "]"}], "]"}], "<>", "\"\< \>\""}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ll", "=", 
+       RowBox[{"Length", "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"formVals", "=", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"ToString", "[", "i", "]"}], "<>", "\"\<:\>\"", "<>", 
+          RowBox[{"ToString", "[", 
+           RowBox[{"nx", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "]"}], "<>", "\"\< \>\""}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "ll"}], "}"}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"i", "=", "1"}], ",", 
+        RowBox[{"i", "\[LessEqual]", "ll"}], ",", 
+        RowBox[{"i", "++"}], ",", 
+        RowBox[{"out", "=", 
+         RowBox[{"out", "<>", 
+          RowBox[{"formVals", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}]}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", 
+       RowBox[{"out", "<>", "\"\<\\n\>\""}], "]"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CreateTrain", "[", 
+    RowBox[{"trainSet_", ",", "trainSamples_", ",", "trainingName_"}], "]"}], 
+   ":=", 
+   RowBox[{"Do", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"svmInput", "=", "\"\<\>\""}], ";", "\[IndentingNewLine]", 
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"indexS", "=", "1"}], ",", 
+        RowBox[{"indexS", "\[LessEqual]", 
+         RowBox[{"Length", "[", "trainSet", "]"}]}], ",", 
+        RowBox[{"indexS", "++"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"svmInput", "=", 
+         RowBox[{"svmInput", "<>", 
+          RowBox[{"Form", "[", 
+           RowBox[{
+            RowBox[{"trainSamples", "[", 
+             RowBox[{"[", "indexS", "]"}], "]"}], ",", 
+            RowBox[{"trainSet", "[", 
+             RowBox[{"[", "indexS", "]"}], "]"}]}], "]"}]}]}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Export", "[", 
+       RowBox[{
+        RowBox[{"pathSVM", "<>", "trainingName"}], ",", "svmInput", ",", 
+        "\"\<Text\>\""}], "]"}]}], ",", 
+     RowBox[{"{", "1", "}"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"CreateTest", "[", 
+    RowBox[{"testSet_", ",", "testSamples_", ",", "testingName_"}], "]"}], ":=", 
+   RowBox[{"Do", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"svmTestInput", "=", "\"\<\>\""}], ";", "\[IndentingNewLine]", 
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"indexT", "=", "1"}], ",", 
+        RowBox[{"indexT", "\[LessEqual]", 
+         RowBox[{"Length", "[", "testSet", "]"}]}], ",", 
+        RowBox[{"indexT", "++"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"svmTestInput", "=", 
+         RowBox[{"svmTestInput", "<>", 
+          RowBox[{"Form", "[", 
+           RowBox[{
+            RowBox[{"testSamples", "[", 
+             RowBox[{"[", "indexT", "]"}], "]"}], ",", 
+            RowBox[{"testSet", "[", 
+             RowBox[{"[", "indexT", "]"}], "]"}]}], "]"}]}]}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Export", "[", 
+       RowBox[{
+        RowBox[{"pathSVM", "<>", "testingName"}], ",", "svmTestInput", ",", 
+        "\"\<Text\>\""}], "]"}]}], ",", 
+     RowBox[{"{", "1", "}"}]}], "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"generatePopulationModels", "[", 
+   RowBox[{
+   "makesize_", ",", "core_", ",", "dataset_", ",", "parmset_", ",", 
+    "roster_", ",", "coretest_"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"newMake", "[", 
+      RowBox[{
+      "makesize", ",", "dataset", ",", "parmset", ",", "1", ",", "2", ",", 
+       "core"}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"CreateTrain", "[", 
+      RowBox[{"toutput", ",", "tsamples", ",", "\"\<train.txt\>\""}], "]"}], 
+     ";", "\[IndentingNewLine]", 
+     RowBox[{"Run", "[", 
+      RowBox[{"pathSVM", "<>", "\"\<svm_learn -z r -c \>\"", "<>", 
+       RowBox[{"ToString", "[", "cc", "]"}], "<>", "\"\< -w .5 -t 2 -g \>\"", 
+       "<>", 
+       RowBox[{"ToString", "[", "gg", "]"}], "<>", "\"\< -q 20 \>\"", "<>", 
+       " ", "pathSVM", "<>", "\"\<train.txt \>\"", "<>", "pathSVM", "<>", 
+       "\"\<CoreModel.txt\>\""}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"CreateTest", "[", 
+      RowBox[{"loutput", ",", "lsamples", ",", "\"\<CoreTest.txt\>\""}], 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"Run", "[", 
+      RowBox[{
+      "pathSVM", "<>", "\"\<svm_classify \>\"", "<>", "pathSVM", "<>", 
+       "\"\<CoreTest.txt \>\"", "<>", "pathSVM", "<>", 
+       "\"\<CoreModel.txt \>\"", "<>", "pathSVM", "<>", 
+       "\"\<CorePreds.txt\>\""}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"dt", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{
+        RowBox[{"pathSVM", "<>", "\"\<CorePreds.txt\>\""}], ",", 
+        "\"\<List\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"error", "=", 
+      RowBox[{"loutput", "-", "dt"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"dTolerance", "=", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{"loutput", "-", "dt"}], "]"}], ",", 
+        RowBox[{"StandardDeviation", "[", 
+         RowBox[{"loutput", "-", "dt"}], "]"}]}], "}"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"tolerances", "=", 
+      RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"modelList", "=", 
+      RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{"coretest", ",", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"ij", "=", "2"}], ",", 
+         RowBox[{"ij", "\[LessEqual]", 
+          RowBox[{"Length", "[", "roster", "]"}]}], ",", 
+         RowBox[{"ij", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"svn", "=", 
+           RowBox[{"roster", "[", 
+            RowBox[{"[", "ij", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"repsvn", "=", 
+           RowBox[{"StringReplace", "[", 
+            RowBox[{"svn", ",", 
+             RowBox[{"\"\<.\>\"", "\[Rule]", "\"\<_\>\""}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"varPos", "=", 
+           RowBox[{
+            RowBox[{"Position", "[", 
+             RowBox[{"roster", ",", "svn"}], "]"}], "[", 
+            RowBox[{"[", 
+             RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"newMake", "[", 
+           RowBox[{
+           "makesize", ",", "dataset", ",", "parmset", ",", "1", ",", "0", 
+            ",", "varPos"}], "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"CreateTrain", "[", 
+           RowBox[{"toutput", ",", "tsamples", ",", "\"\<train.txt\>\""}], 
+           "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Run", "[", 
+           RowBox[{"pathSVM", "<>", "\"\<svm_learn -z r -c \>\"", "<>", 
+            RowBox[{"ToString", "[", "cc", "]"}], "<>", "\"\< -t 2 -g \>\"", "<>", 
+            RowBox[{"ToString", "[", "gg", "]"}], "<>", "\"\< -q 2 \>\"", "<>",
+             " ", "pathSVM", "<>", "\"\<train.txt \>\"", "<>", "pathSVM", "<>",
+             "repsvn", "<>", "\"\<model.txt\>\""}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"(*", 
+           RowBox[{"Check", " ", "fit"}], "*)"}], "\[IndentingNewLine]", 
+          RowBox[{"CreateTest", "[", 
+           RowBox[{"loutput", ",", "lsamples", ",", "\"\<test.txt\>\""}], 
+           "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Run", "[", 
+           RowBox[{
+           "pathSVM", "<>", "\"\<svm_classify -v 3 \>\"", "<>", "pathSVM", 
+            "<>", "\"\<test.txt \>\"", "<>", "pathSVM", "<>", "repsvn", "<>", 
+            "\"\<model.txt \>\"", "<>", "pathSVM", "<>", 
+            "\"\<Prediction.txt\>\""}], "]"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"preds", "=", 
+           RowBox[{"Import", "[", 
+            RowBox[{
+             RowBox[{"pathSVM", "<>", "\"\<Prediction.txt\>\""}], ",", 
+             "\"\<List\>\""}], "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"tolerances", ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Mean", "[", 
+               RowBox[{"preds", "-", "loutput"}], "]"}], ",", 
+              RowBox[{"StandardDeviation", "[", 
+               RowBox[{"preds", "-", "loutput"}], "]"}]}], "}"}]}], "]"}], 
+          ";", "\[IndentingNewLine]", 
+          RowBox[{"AppendTo", "[", 
+           RowBox[{"modelList", ",", 
+            RowBox[{"svn", "<>", "\"\<model.txt\>\""}]}], "]"}]}]}], "]"}]}], 
+      "]"}]}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.6700790673026056`*^9, 3.670079087407756*^9}, {
+  3.670079128374099*^9, 3.6700791288091235`*^9}, {3.6700792268597317`*^9, 
+  3.67007922735476*^9}}]
+},
+WindowSize->{1272, 817},
+WindowMargins->{{Automatic, 77}, {Automatic, 48}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (October 6, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 1712, 24, 72, "Input"],
+Cell[2272, 46, 13352, 322, 1272, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,14 @@
+<roster>
+<var><name> System.X  </name></var>
+<var><name> FluidVolumes.ECFV</name><format> 0 </format></var>
+<var><name> FluidVolumes.BV</name><format> 0 </format></var>
+<var><name> FluidVolumes.AP</name><format> 0 </format></var>
+<var><name> FluidVolumes.UO</name><format> 1 </format></var>
+<var><name> BaroreceptorReflex.SYM </name><format> 1 </format></var>
+<var><name> BaroreceptorReflex.AFFNA </name><format> 1 </format></var>
+<var><name> CardiacOutput.MCFP </name><format> 1 </format></var>
+<var><name> CardiacOutput.RAP </name><format> 1 </format></var>
+<var><name> CardiacOutput.CO </name><format> 0 </format></var>
+<var><name> CardiacOutput.RVR </name><format> 3 </format></var>
+<var><name> FlowAutoregulation.TPR </name><format> 3 </format></var>
+</roster>
